@@ -1,11 +1,5 @@
-
-import React from 'react';
 import reactDOM from 'react-dom';
 import "./index.css"
+import ApolloProvider from './ApolloProvider';
 
-
-const App = () => {
-  return <div>Hello World</div>
-}
-
-reactDOM.render(<App />, document.getElementById('root'))
+reactDOM.render(ApolloProvider, document.getElementById('root'))
