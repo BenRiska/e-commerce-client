@@ -3,6 +3,7 @@ import "../styles/NavBar.css"
 import SearchIcon from '@material-ui/icons/Search'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import {Link} from "react-router-dom"
 
 function NavBar() {
 
@@ -21,7 +22,6 @@ function NavBar() {
     }
 
     const closeNav = () => {
-        console.log("hit")
         const nav = document.querySelector(".dropdown__navbar");
         const line1 = document.querySelector(".line-1");
         const line2 = document.querySelector(".line-2");
@@ -37,33 +37,33 @@ function NavBar() {
         <>
         <div className="dropdown__navbar">
             <div className="dropdown__column">
-                <p>Home</p>
+                <Link to="/">Home</Link>
             </div>
             <ul>
-                <li>Shop</li>
-                <li>Sale</li>
-                <li>Contact</li>
-                <li>Brand</li>
-                <li>Video</li>
-                <li>Events</li>
-                <li>Agents</li>
-                <li>Stores</li>
-                <li>Contact</li>
+                <li><Link onClick={closeNav} to="/error">Shop</Link></li>
+                <li><Link style={{color: "#cb0000"}} onClick={closeNav} to="/error">Sale</Link></li>
+                <li><Link onClick={closeNav} to="/error">Contact</Link></li>
+                <li><Link onClick={closeNav} to="/error">Brand</Link></li>
+                <li><Link onClick={closeNav} to="/error">Video</Link></li>
+                <li><Link onClick={closeNav} to="/error">Events</Link></li>
+                <li><Link onClick={closeNav} to="/error">Agents</Link></li>
+                <li><Link onClick={closeNav} to="/error">Stores</Link></li>
+                <li><Link onClick={closeNav} to="/error">Contact</Link></li>
             </ul>
             <div className="dropdown__column">
                 <div className="column__container">
-                <span>Facebook</span>
-                <span>Instagram</span>
+                <Link to="/error">Facebook</Link>
+                <Link to="/error">Instagram</Link>
                 </div>
             </div>
         </div>
         <div className="navbar">
             <div className="navbar__left">
-                <a className="navbar__logo" href="/">Bens Store</a>
+                <Link className="navbar__logo" to="/">Bens Store</Link>
                 <nav>
                     <ul className="navbar__left-items">
-                        <li>Shop</li>
-                        <li>Sale</li>
+                        <li><Link to="/error">Shop</Link></li>
+                        <li><Link to="/error">Sale</Link></li>
                     </ul>
                 </nav>
             </div>
@@ -82,15 +82,15 @@ function NavBar() {
             <div className="navbar__right">
                 <nav>
                     <ul className="navbar__right-items">
-                        <li>Brand</li>
-                        <li>Contact</li>
+                        <li><Link to="/error">Brand</Link></li>
+                        <li><Link to="/error">Contact</Link></li>
                     </ul>
                 </nav>
                 <nav>
                     <ul className="shopping__menu">
-                        <li><SearchIcon/></li>
-                        <li><ExitToAppIcon/></li>
-                        <li><ShoppingBasketIcon/></li>
+                        <li><Link to="/error"><SearchIcon/></Link></li>
+                        <li><Link to="/error"><ExitToAppIcon/></Link></li>
+                        <li><Link to="/error"><ShoppingBasketIcon/></Link></li>
                     </ul>
                 </nav>
             </div>

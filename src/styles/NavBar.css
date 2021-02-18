@@ -7,6 +7,7 @@
   z-index: 9999;
   top: 0;
   left: 0;
+  background-color: #fff;
 }
 
 .navbar__left {
@@ -40,13 +41,17 @@
 .navbar__left-items > li {
   display: inline-block;
   font-size: 1rem;
-  color: #000;
   text-transform: uppercase;
   margin-left: 32px;
   text-decoration: none;
 }
 
-.navbar__left-items > li:nth-child(2) {
+.navbar__left-items > li > a {
+  text-decoration: none;
+  color: #000;
+}
+
+.navbar__left-items > li:nth-child(2) > a {
   color: #cb0000;
 }
 
@@ -112,10 +117,14 @@
 .navbar__right-items > li {
   display: inline-block;
   font-size: 1rem;
-  color: #000;
   text-transform: uppercase;
   margin-right: 32px;
   text-decoration: none;
+}
+
+.navbar__right-items > li > a {
+  text-decoration: none;
+  color: #000;
 }
 
 .shopping__menu {
@@ -125,11 +134,15 @@
 .shopping__menu > li {
   display: inline-block;
   font-size: 1rem;
-  color: #000;
   text-transform: uppercase;
   margin-left: 32px;
   text-decoration: none;
   position: relative;
+}
+
+.shopping__menu > li > a {
+  color: #000;
+  text-decoration: none;
 }
 
 .dropdown__navbar {
@@ -137,10 +150,11 @@
   top: 80px;
   position: absolute;
   background-color: #fff;
-  width: 100%;
+  width: 100vw;
   transform: scale(0);
   transform-origin: top;
   transition: 0.4s;
+  z-index: 9998;
 }
 
 .dropdown__navbar > ul {
@@ -160,6 +174,11 @@
   font-weight: bold;
 }
 
+.dropdown__navbar > ul > li > a {
+  text-decoration: none;
+  color: black;
+}
+
 .dropdown__column {
   height: 13vh;
   width: 100%;
@@ -174,7 +193,13 @@
   display: flex;
 }
 
-.column__container > span:nth-child(1) {
+.column__container > a,
+.dropdown__column > a {
+  text-decoration: none;
+  color: black;
+}
+
+.column__container > a:nth-child(1) {
   margin-right: 10vw;
 }
 
@@ -189,10 +214,10 @@
 
 @keyframes dropdown-container-disappear {
   0% {
-    transform: translateY(0);
+    transform: scale(1);
   }
   100% {
-    transform: translateY(100%);
+    transform: scale(0);
   }
 }
 

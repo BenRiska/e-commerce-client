@@ -1,3 +1,82 @@
 .landing {
   margin-top: 80px;
+  border-bottom: 1px solid #eae8e4;
+}
+
+.landing__banner {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #eae8e4;
+}
+
+.banner__item {
+  flex: 0 0 calc((100% / 12) * 6);
+  max-width: calc((100% / 12) * 6);
+  display: grid;
+  place-items: center;
+  padding: 40px 60px;
+  position: relative;
+  border-right: 1px solid #eae8e4;
+}
+
+.banner__item > a {
+  position: relative;
+}
+
+.banner__item > a > img {
+  object-fit: contain;
+  max-width: 100%;
+  width: 100%;
+}
+
+.banner__overlay {
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.banner__overlay > h2 {
+  font-size: calc(1rem + 1.8vw);
+}
+
+.banner__overlay > p {
+  font-size: 0.8rem;
+}
+
+.banner__overlay > a {
+  padding: 0.7rem 2rem;
+  border: 1px solid #fff;
+  margin-top: 2rem;
+  color: white;
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+.banner__overlay > a:hover {
+  background-color: #fff;
+  color: black;
+}
+
+.landing__slogan {
+  margin: 120px auto;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.landing__slogan > p {
+  margin-bottom: 0.5rem;
+}
+
+.landing__slogan > a {
+  color: black;
+  font-weight: bold;
 }
