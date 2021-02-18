@@ -7,6 +7,7 @@ import { AuthProvider } from './context/auth';
 import Entry from './pages/Entry';
 import Error from './pages/Error';
 import Landing from './pages/Landing';
+import Shop from './pages/Shop';
 import AuthRoute from './utils/AuthRoute';
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
             <Router>
                 <NavBar/>
                 <Switch>
-                <Route exact path="/error" component={Error} />
+                    <Route exact path="/shop" component={Shop} />
+                    <Route exact path="/error" component={Error} />
                     <Route exact path="/login" component={Entry} />
                     <Route exact path="/" component={Landing} />
                 </Switch>

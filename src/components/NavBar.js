@@ -40,8 +40,8 @@ function NavBar() {
                 <Link to="/">Home</Link>
             </div>
             <ul>
-                <li><Link onClick={closeNav} to="/error">Shop</Link></li>
-                <li><Link style={{color: "#cb0000"}} onClick={closeNav} to="/error">Sale</Link></li>
+                <li><Link onClick={closeNav} to="/shop">Shop</Link></li>
+                <li><Link style={{color: "#cb0000"}} onClick={closeNav} to="/shop">Sale</Link></li>
                 <li><Link onClick={closeNav} to="/error">Contact</Link></li>
                 <li><Link onClick={closeNav} to="/error">Brand</Link></li>
                 <li><Link onClick={closeNav} to="/error">Video</Link></li>
@@ -62,8 +62,8 @@ function NavBar() {
                 <Link className="navbar__logo" to="/">Bens Store</Link>
                 <nav>
                     <ul className="navbar__left-items">
-                        <li><Link to="/error">Shop</Link></li>
-                        <li><Link to="/error">Sale</Link></li>
+                        <li><Link to="/shop">Shop</Link></li>
+                        <li><Link to="/shop">Sale</Link></li>
                     </ul>
                 </nav>
             </div>

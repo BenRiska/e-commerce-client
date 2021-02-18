@@ -30,7 +30,7 @@ function Landing() {
             </div>
             <div className="landing__slogan">
                 <p>CHARM, HISTORY AND RESEARCH: BEN'S SHOP EMBODIES THE INCOMPARABLE VALUE OF MADE IN LONDON, THROUGH DESIGN AND CREATION OF A WIDE CHOICE OF SHOES FOR DAILY USE.</p>
-                <Link>READ MORE</Link>
+                <Link to="/">READ MORE</Link>
             </div>
         </div>
     )
