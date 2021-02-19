@@ -148,7 +148,7 @@
 .dropdown__navbar {
   height: calc(100vh - 80px);
   top: 80px;
-  position: absolute;
+  position: fixed;
   background-color: #fff;
   width: 100vw;
   transform: scale(0);

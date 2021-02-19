@@ -8,24 +8,24 @@ function Landing() {
         <div className="landing">
             <div className="landing__banner">
                 <div className="banner__item">
-                    <Link to="/error">
+                    <div>
                         <img src="https://www.fru.it/site/wp-content/themes/fruit2020/img/shop_feb2021.jpg" alt="banner content"/>
                         <div className="banner__overlay">
                             <h2>SHOP</h2>
                             <p>New Collection & Must Have</p>
                             <Link to="/error">Shop Now</Link>
                         </div>
-                    </Link>
+                    </div>
                 </div>
                 <div className="banner__item">
-                    <Link to="/error">
+                    <div>
                         <img src="https://www.fru.it/site/wp-content/themes/fruit2020/img/sale_feb2021.jpg" alt="banner content"/>
                         <div className="banner__overlay">
                             <h2>SALE</h2>
                             <p>Up to 50% off</p>
                             <Link to="/error">Shop Now</Link>
                         </div>
-                    </Link>
+                    </div>
                 </div>
             </div>
             <div className="landing__slogan">

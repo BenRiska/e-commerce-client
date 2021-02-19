@@ -1,0 +1,19 @@
+.productFilter {
+  border-bottom: 1px solid #eae8e4;
+}
+
+.productFilter > ul {
+  display: flex;
+  list-style: none;
+  padding: 0.5rem 1rem;
+  flex-wrap: wrap;
+}
+
+.productFilter > ul > li {
+  padding-left: 1rem;
+  cursor: pointer;
+}
+
+.productFilter > ul > li:hover {
+  text-decoration: underline;
+}
