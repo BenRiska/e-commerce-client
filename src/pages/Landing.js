@@ -13,7 +13,7 @@ function Landing() {
                         <div className="banner__overlay">
                             <h2>SHOP</h2>
                             <p>New Collection & Must Have</p>
-                            <Link to="/error">Shop Now</Link>
+                            <Link to="/shop">Shop Now</Link>
                         </div>
                     </div>
                 </div>
@@ -23,7 +23,7 @@ function Landing() {
                         <div className="banner__overlay">
                             <h2>SALE</h2>
                             <p>Up to 50% off</p>
-                            <Link to="/error">Shop Now</Link>
+                            <Link to="/shop">Shop Now</Link>
                         </div>
                     </div>
                 </div>

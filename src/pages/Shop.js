@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { useQuery } from '@apollo/react-hooks';
 import "../styles/Shop/Shop.css"
 import {FETCH_CATEGORIES, FETCH_PRODUCTS} from "../utils/queries"
@@ -7,17 +7,15 @@ import ProductGrid from '../components/Shop/ProductGrid';
 
 function Shop() {
 
-    const [selectedCategory, setSelectedCategory] = useState(null)
-
     const {data: { fetchCategories: categories } = {}} = useQuery(FETCH_CATEGORIES)
 
-    const { loading,error, data: { fetchProducts: products } = {}} = useQuery(FETCH_PRODUCTS)
+    const { loading,error, data: { fetchProducts: products } = {}} = useQuery(FETCH_PRODUCTS, {variables: {categoryId: undefined}})
 
     console.log(products)
 
     return (
         <div className="shop">
-            <ProductFilter categories={categories} setSelectedCategory={setSelectedCategory}/>
+            <ProductFilter categories={categories}/>
             <ProductGrid products={products}/>
         </div>
     )

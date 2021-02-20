@@ -1,16 +1,26 @@
-import React from 'react'
+import React, {useState, useContext} from 'react'
 import { useQuery } from '@apollo/react-hooks';
 import {useParams} from 'react-router-dom';
 import {FETCH_PRODUCT} from "../utils/queries"
 import "../styles/Product/Product.css"
+import { AuthContext } from '../context/auth';
 
 function Product() {
+
+    const { addToCart } = useContext(AuthContext);
+
+    const [size, setSize] = useState(null)
 
     const {id} = useParams()
 
     const { loading,error, data: { fetchProduct: product } = {}} = useQuery(FETCH_PRODUCT, {variables: {id}})
 
-    console.log(product)
+    const addItem = (newItem) => {
+        if(size){
+            newItem.size = size
+            addToCart(newItem)
+        }
+    }
 
     return (
         <div className="product">
@@ -29,12 +39,12 @@ function Product() {
                         <div className="select__column">
                             <ul className="select__sizes">
                                 {product?.sizes.map(size => 
-                                <li key={size}>{size}</li>
+                                <li onClick={() => setSize(size)} key={size}>{size}</li>
                                 )}
                             </ul>
                             <p className="select__price">{product?.price}</p>
                         </div>
-                        <button className="select__button">Add to cart</button>
+                        <button onClick={() => addItem(product)} className="select__button">Add to cart</button>
                     </div>
             </div>
             <div className="product__disclaimer">

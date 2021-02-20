@@ -33,3 +33,16 @@ query fetchProduct($id: String!){
     }
   }
 `
+
+export const FILTER_BY_CATEGORY = gql`
+mutation filterByCategory($categoryId: ID!){
+    filterByCategory(categoryId: $categoryId){
+      name
+      id
+      description
+      images
+      sizes
+      price
+    }
+  }
+`

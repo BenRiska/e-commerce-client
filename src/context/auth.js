@@ -3,7 +3,15 @@ import React, { useReducer, createContext } from 'react';
 import jwtDecode from 'jwt-decode';
 
 const initialState = {
-  user: null
+  user: null,
+  cart: [{
+    name: "6752-CUOIO",
+    description: "# Amphibian # Split leather upper # Leather interior # Extra light rubber sole # Round toe # Oversized tongue # A cornerstone of underground fashion that manages to give an extra touch of character to all metropolitan outfits #Always present in women's wardrobes, even the most glamorous # Fit: buy your usual size # Made in Italy # Composition: 100% Calf",
+    size: 35,
+    sizes: ["35", "26", "37", "38"],
+    images: ["https://www.fru.it/site/wp-content/uploads/2021/01/6752_5.jpg"],
+    price: "299,00"
+  }]
 };
 
 if (localStorage.getItem('jwtToken')) {
@@ -19,7 +27,8 @@ if (localStorage.getItem('jwtToken')) {
   const AuthContext = createContext({
     user: null,
     login: (userData) => {},
-    logout: () => {}
+    logout: () => {},
+    addToCart: (newItem) => {}
   });
 
   function authReducer(state, action) {
@@ -34,6 +43,11 @@ if (localStorage.getItem('jwtToken')) {
           ...state,
           user: null
         };
+        case "ADD_TO_CART":
+      return {
+        ...state,
+        cart: [...state.cart, action.payload]
+      };
       default:
         return state;
     }
@@ -54,13 +68,19 @@ if (localStorage.getItem('jwtToken')) {
       localStorage.removeItem('jwtToken');
       dispatch({ type: 'LOGOUT' });
     }
+
+    function addToCart(newItem){
+      dispatch({type: "ADD_TO_CART", payload: newItem})
+    }
   
     return (
       <AuthContext.Provider
         value={{ 
           user: state.user, 
+          cart: state.cart,
           login, 
           logout, 
+          addToCart
            }}
         {...props}
       />

@@ -17,6 +17,7 @@
   justify-content: space-between;
   align-items: center;
   height: 50px;
+  font-size: 0.8rem;
 }
 
 .productCard__header > ul {
@@ -57,4 +58,5 @@
   height: 50px;
   display: flex;
   align-items: center;
+  font-size: 1rem;
 }

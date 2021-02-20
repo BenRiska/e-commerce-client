@@ -37,12 +37,12 @@ function NavBar() {
         <>
         <div className="dropdown__navbar">
             <div className="dropdown__column">
-                <Link to="/">Home</Link>
+                <Link onClick={closeNav} to="/">Home</Link>
             </div>
             <ul>
                 <li><Link onClick={closeNav} to="/shop">Shop</Link></li>
                 <li><Link style={{color: "#cb0000"}} onClick={closeNav} to="/shop">Sale</Link></li>
-                <li><Link onClick={closeNav} to="/error">Contact</Link></li>
+                <li><Link onClick={closeNav} to="/cart">Cart</Link></li>
                 <li><Link onClick={closeNav} to="/error">Brand</Link></li>
                 <li><Link onClick={closeNav} to="/error">Video</Link></li>
                 <li><Link onClick={closeNav} to="/error">Events</Link></li>
@@ -52,8 +52,8 @@ function NavBar() {
             </ul>
             <div className="dropdown__column">
                 <div className="column__container">
-                <Link to="/error">Facebook</Link>
-                <Link to="/error">Instagram</Link>
+                <Link onClick={closeNav} to="/error">Facebook</Link>
+                <Link onClick={closeNav} to="/error">Instagram</Link>
                 </div>
             </div>
         </div>
@@ -90,7 +90,7 @@ function NavBar() {
                     <ul className="shopping__menu">
                         <li><Link to="/error"><SearchIcon/></Link></li>
                         <li><Link to="/error"><ExitToAppIcon/></Link></li>
-                        <li><Link to="/error"><ShoppingBasketIcon/></Link></li>
+                        <li><Link to="/cart"><ShoppingBasketIcon/></Link></li>
                     </ul>
                 </nav>
             </div>
