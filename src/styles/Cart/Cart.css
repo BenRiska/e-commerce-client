@@ -12,14 +12,24 @@
 
 td {
   border: 1px solid #eae8e4;
-  border-left: none;
+  border-right: none;
+  text-align: center;
+}
+
+.row-remove {
+  width: 50px;
 }
 
 .row-image {
-  width: fit-content;
+  width: 350px;
+  height: 350px;
 }
 
 .row-image > img {
-  width: 300px;
-  height: 300px;
+  width: 90%;
+  height: 90%;
+}
+
+.deleteBtn {
+  cursor: pointer;
 }

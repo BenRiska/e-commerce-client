@@ -1,11 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import "../styles/NavBar.css"
 import SearchIcon from '@material-ui/icons/Search'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import {Link} from "react-router-dom"
+import { AuthContext } from '../context/auth';
 
 function NavBar() {
+
+    const {cart} = useContext(AuthContext)
 
     const [navState, setNavState] = useState(false)
 
@@ -90,7 +93,7 @@ function NavBar() {
                     <ul className="shopping__menu">
                         <li><Link to="/error"><SearchIcon/></Link></li>
                         <li><Link to="/error"><ExitToAppIcon/></Link></li>
-                        <li><Link to="/cart"><ShoppingBasketIcon/></Link></li>
+                        <li><Link className="basket__link" to="/cart"><ShoppingBasketIcon/>{cart.length}</Link></li>
                     </ul>
                 </nav>
             </div>

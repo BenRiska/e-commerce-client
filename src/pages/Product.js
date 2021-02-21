@@ -19,6 +19,8 @@ function Product() {
         if(size){
             newItem.size = size
             addToCart(newItem)
+        } else{
+            alert("Please select a size first.")
         }
     }
 
@@ -38,8 +40,8 @@ function Product() {
                     <div className="product__select">
                         <div className="select__column">
                             <ul className="select__sizes">
-                                {product?.sizes.map(size => 
-                                <li onClick={() => setSize(size)} key={size}>{size}</li>
+                                {product?.sizes.map(i => 
+                                <li style={{backgroundColor: size === i ?"black" : "initial", color: size === i ? "white": "black"}} onClick={() => setSize(i)} key={i}>{i}</li>
                                 )}
                             </ul>
                             <p className="select__price">{product?.price}</p>

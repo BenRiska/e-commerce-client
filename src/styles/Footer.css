@@ -29,6 +29,11 @@
   font-size: 0.8rem;
 }
 
+.footer__links > a:hover,
+.footer__socials > a:hover {
+  text-decoration: underline;
+}
+
 .footer__seperator {
   margin-left: 1rem;
 }

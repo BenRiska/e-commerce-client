@@ -10,7 +10,8 @@ const initialState = {
     size: 35,
     sizes: ["35", "26", "37", "38"],
     images: ["https://www.fru.it/site/wp-content/uploads/2021/01/6752_5.jpg"],
-    price: "299,00"
+    price: "299,00",
+    id: 1
   }]
 };
 
@@ -23,12 +24,17 @@ if (localStorage.getItem('jwtToken')) {
       initialState.user = decodedToken;
     }
   }
+  
+  if(localStorage.getItem("bens-shop-cart")){
+    initialState.cart = JSON.parse(localStorage.getItem('bens-shop-cart'));
+  }
 
   const AuthContext = createContext({
     user: null,
     login: (userData) => {},
     logout: () => {},
-    addToCart: (newItem) => {}
+    addToCart: (newItem) => {},
+    removeFromCart: (item) => {}
   });
 
   function authReducer(state, action) {
@@ -44,9 +50,18 @@ if (localStorage.getItem('jwtToken')) {
           user: null
         };
         case "ADD_TO_CART":
+          let updatedCart = [...state.cart, action.payload]
+          localStorage.setItem('bens-shop-cart', JSON.stringify(updatedCart));
       return {
         ...state,
-        cart: [...state.cart, action.payload]
+        cart: updatedCart
+      };
+      case "REMOVE_FROM_CART":
+        let newCart = state.cart.filter(item => item.id !== action.payload.id)
+        localStorage.setItem('bens-shop-cart', JSON.stringify(newCart));
+      return {
+        ...state,
+        cart: newCart
       };
       default:
         return state;
@@ -72,6 +87,10 @@ if (localStorage.getItem('jwtToken')) {
     function addToCart(newItem){
       dispatch({type: "ADD_TO_CART", payload: newItem})
     }
+
+    function removeFromCart(item){
+      dispatch({type: "REMOVE_FROM_CART", payload: item})
+    }
   
     return (
       <AuthContext.Provider
@@ -80,7 +99,8 @@ if (localStorage.getItem('jwtToken')) {
           cart: state.cart,
           login, 
           logout, 
-          addToCart
+          addToCart,
+          removeFromCart
            }}
         {...props}
       />

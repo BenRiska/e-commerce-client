@@ -5,6 +5,7 @@ import Newsletter from './components/Landing/Newsletter';
 import NavBar from './components/NavBar';
 import { AuthProvider } from './context/auth';
 import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
 import Entry from './pages/Entry';
 import Error from './pages/Error';
 import Landing from './pages/Landing';
@@ -18,6 +19,7 @@ function App() {
             <Router>
                 <NavBar/>
                 <Switch>
+                    <Route exact path="/checkout" component={Checkout} />
                     <Route exact path="/cart" component={Cart} />
                     <Route exact path="/item/:id" component={Product} />
                     <Route exact path="/shop" component={Shop} />

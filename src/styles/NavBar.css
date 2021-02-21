@@ -46,6 +46,11 @@
   text-decoration: none;
 }
 
+.navbar__left-items > li:hover,
+.navbar__right-items > li:hover {
+  text-decoration: underline;
+}
+
 .navbar__left-items > li > a {
   text-decoration: none;
   color: #000;
@@ -201,6 +206,11 @@
 
 .column__container > a:nth-child(1) {
   margin-right: 10vw;
+}
+
+.basket__link {
+  display: flex;
+  align-items: center;
 }
 
 @keyframes dropdown-container-appear {
