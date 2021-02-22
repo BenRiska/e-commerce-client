@@ -10,7 +10,7 @@ const initialState = {
     size: 35,
     sizes: ["35", "26", "37", "38"],
     images: ["https://www.fru.it/site/wp-content/uploads/2021/01/6752_5.jpg"],
-    price: "299,00",
+    price: "299.00",
     id: 1
   }]
 };

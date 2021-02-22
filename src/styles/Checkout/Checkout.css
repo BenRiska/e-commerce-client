@@ -1,3 +1,106 @@
 .checkout {
+  margin: 0 auto;
   margin-top: 80px;
+  max-width: 1400px;
+}
+
+.checkout__form,
+.checkout__payment-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.checkout__form > label,
+.checkout__form > h2 {
+  padding: 2rem;
+  font-weight: bold;
+}
+
+.checkout__form > h2,
+.checkout__form > label,
+.checkout__form > input,
+.checkout__form > select,
+.checkout__login-prompt {
+  border: 1px solid #eae8e4;
+  border-top: none;
+  width: 100%;
+}
+
+.checkout__login-prompt {
+  padding: 0.5rem 2rem;
+}
+
+.checkout__login-prompt > p {
+  font-size: 0.8rem;
+}
+
+.checkout__login-prompt > p > a {
+  color: black;
+}
+
+.checkout__form > label > span {
+  color: #cb0000;
+}
+
+.checkout__form > input,
+.checkout__form > select {
+  padding: 1.2rem;
+  background-color: #fafafa;
+}
+
+.checkout__payment-summary {
+  width: 100%;
+}
+
+.checkout__payment-summary > h2,
+.checkout__payment-summary > div {
+  padding: 0.5rem;
+  width: 100%;
+  border: 1px solid #eae8e4;
+  border-top: none;
+}
+
+.checkout__payment-summary > h2 {
+  padding: 2rem;
+}
+
+.checkout__payment-summary > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout__payment-summary > div > p {
+  flex: 0.5;
+  text-align: center;
+  height: 100%;
+  font-weight: bold;
+  padding: 0.3rem;
+  text-transform: uppercase;
+}
+
+.checkout__payment-summary > div > p:nth-child(1) {
+  border-right: 1px solid #eae8e4;
+}
+
+.checkout__payment-confirm {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #eae8e4;
+  border-top: none;
+}
+
+.checkout__payment-confirm > div {
+  padding: 0.5rem;
+}
+
+.checkout__payment-confirm > button {
+  width: 100%;
+  padding: 1.2rem;
+  border: none;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  cursor: pointer;
 }

@@ -8,7 +8,7 @@ import { AuthContext } from '../context/auth';
 
 function NavBar() {
 
-    const {cart} = useContext(AuthContext)
+    const {cart, user, logout} = useContext(AuthContext)
 
     const [navState, setNavState] = useState(false)
 
@@ -92,7 +92,11 @@ function NavBar() {
                 <nav>
                     <ul className="shopping__menu">
                         <li><Link to="/error"><SearchIcon/></Link></li>
-                        <li><Link to="/error"><ExitToAppIcon/></Link></li>
+                        {user ? 
+                        <p onClick={logout}>Logout</p>
+                        :
+                        <li><Link to="/login"><ExitToAppIcon/></Link></li>
+                        }
                         <li><Link className="basket__link" to="/cart"><ShoppingBasketIcon/>{cart.length}</Link></li>
                     </ul>
                 </nav>
