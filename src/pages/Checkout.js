@@ -2,8 +2,10 @@ import React, {useContext} from 'react'
 import "../styles/Checkout/Checkout.css"
 import {Link} from "react-router-dom"
 import { AuthContext } from '../context/auth';
+import { useMutation } from '@apollo/react-hooks';
+import {CREATE_ORDER} from "../utils/queries"
 
-function Checkout() {
+function Checkout(props) {
 
     const {user, cart} = useContext(AuthContext)
 
@@ -18,6 +20,21 @@ function Checkout() {
 
         return total.toString()
     }
+
+    const [createOrder] = useMutation(CREATE_ORDER, {
+        update(
+          _,
+          {
+            data: { createOrder: orderData }
+          }
+        ) {
+          props.history.push(`/order/${orderData.id}`);
+        },
+        onError(err) {
+          console.log(err)
+        },
+        variables: {cartInput: {paypalId: Math.random() * 1000, cartItems: cart}}
+      });
 
     return (
         <div className="checkout">
@@ -77,7 +94,10 @@ function Checkout() {
                     <div>
                         <p>I have read and agree to the website terms and conditions *</p>
                     </div>
-                    <button onClick={() => alert("This is not a real website, sorry!")}>PROCEED TO PAYPAL</button>
+                    <button onClick={(e) => {
+                        e.preventDefault()
+                        createOrder()
+                        }}>PROCEED TO PAYPAL</button>
                 </div>
             </form>
         </div>

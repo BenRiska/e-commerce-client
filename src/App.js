@@ -9,6 +9,7 @@ import Checkout from './pages/Checkout';
 import Entry from './pages/Entry';
 import Error from './pages/Error';
 import Landing from './pages/Landing';
+import OrderConfirm from './pages/OrderConfirm';
 import Product from './pages/Product';
 import Shop from './pages/Shop';
 import AuthRoute from './utils/AuthRoute';
@@ -19,6 +20,7 @@ function App() {
             <Router>
                 <NavBar/>
                 <Switch>
+                    <Route exact path="/order/:id" component={OrderConfirm} />
                     <Route exact path="/checkout" component={Checkout} />
                     <Route exact path="/cart" component={Cart} />
                     <Route exact path="/item/:id" component={Product} />
