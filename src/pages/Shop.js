@@ -11,8 +11,6 @@ function Shop() {
 
     const { loading,error, data: { fetchProducts: products } = {}} = useQuery(FETCH_PRODUCTS, {variables: {categoryId: undefined}})
 
-    console.log(products)
-
     return (
         <div className="shop">
             <ProductFilter categories={categories}/>

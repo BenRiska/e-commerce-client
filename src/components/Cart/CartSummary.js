@@ -11,7 +11,7 @@ function CartSummary() {
 
         let total = 0;
 
-        cart.forEach(element => {
+        cart?.products?.forEach(element => {
            total += parseFloat(element.price)
         });
 

@@ -1,13 +1,13 @@
 import React, {useState, useContext} from 'react'
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import {useParams} from 'react-router-dom';
-import {FETCH_PRODUCT} from "../utils/queries"
+import {FETCH_PRODUCT, ADD_PRODUCT} from "../utils/queries"
 import "../styles/Product/Product.css"
 import { AuthContext } from '../context/auth';
 
-function Product() {
+function Product(props) {
 
-    const { addToCart } = useContext(AuthContext);
+    const { setCart, cart } = useContext(AuthContext);
 
     const [size, setSize] = useState(null)
 
@@ -15,20 +15,51 @@ function Product() {
 
     const { loading,error, data: { fetchProduct: product } = {}} = useQuery(FETCH_PRODUCT, {variables: {id}})
 
-    const addItem = (newItem) => {
+    const [addProduct] = useMutation(ADD_PRODUCT, {
+        update(_,{data: {addProduct: newCart}}){
+            setCart(newCart)
+            props.history.push("/cart")
+        },
+        onError(err){console.log(err)}
+    })
+
+    const executeAddProduct = (product) => {
         if(size){
-            newItem.size = size
-            addToCart(newItem)
-        } else{
+            if(cart){
+                addProduct({variables: {
+                    productId: product.id, 
+                    cartId: cart.id, 
+                    size,
+                    quantity: 1
+                }})
+            } else{
+                console.log(product.id)
+                addProduct({variables: {
+                    productId: product.id,
+                    cartId: "",
+                    size,
+                    quantity: 1
+                }})
+            }
+        } else {
             alert("Please select a size first.")
         }
     }
+
+    // const addItem = (newItem) => {
+    //     if(size){
+    //         newItem.size = size
+    //         addToCart(newItem)
+    //     } else{
+    //         alert("Please select a size first.")
+    //     }
+    // }
 
     return (
         <div className="product">
             <div className="product__images">
                 {product?.images.map(image => 
-                <img key={image} src={image} alt="product"/>
+                <img key={image + Math.random()} src={image} alt="product"/>
                 )}
             </div>
             <div className="product__info">
@@ -46,7 +77,12 @@ function Product() {
                             </ul>
                             <p className="select__price">{product?.price}</p>
                         </div>
-                        <button onClick={() => addItem(product)} className="select__button">Add to cart</button>
+                        <button 
+                        onClick={(e) => {
+                            e.preventDefault()
+                            executeAddProduct(product)
+                        }}
+                        className="select__button">Add to cart</button>
                     </div>
             </div>
             <div className="product__disclaimer">

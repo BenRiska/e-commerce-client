@@ -97,7 +97,7 @@ function NavBar() {
                         :
                         <li><Link to="/login"><ExitToAppIcon/></Link></li>
                         }
-                        <li><Link className="basket__link" to="/cart"><ShoppingBasketIcon/>{cart.length}</Link></li>
+                        <li><Link className="basket__link" to="/cart"><ShoppingBasketIcon/>{cart?.products?.length}</Link></li>
                     </ul>
                 </nav>
             </div>

@@ -3,7 +3,7 @@ import "../styles/Checkout/Checkout.css"
 import {Link} from "react-router-dom"
 import { AuthContext } from '../context/auth';
 import { useMutation } from '@apollo/react-hooks';
-import {CREATE_ORDER} from "../utils/queries"
+
 
 function Checkout(props) {
 
@@ -20,21 +20,6 @@ function Checkout(props) {
 
         return total.toString()
     }
-
-    const [createOrder] = useMutation(CREATE_ORDER, {
-        update(
-          _,
-          {
-            data: { createOrder: orderData }
-          }
-        ) {
-          props.history.push(`/order/${orderData.id}`);
-        },
-        onError(err) {
-          console.log(err)
-        },
-        variables: {cartInput: {paypalId: Math.random() * 1000, cartItems: cart}}
-      });
 
     return (
         <div className="checkout">
@@ -96,7 +81,7 @@ function Checkout(props) {
                     </div>
                     <button onClick={(e) => {
                         e.preventDefault()
-                        createOrder()
+                        props.history.push(`/order/1`);
                         }}>PROCEED TO PAYPAL</button>
                 </div>
             </form>

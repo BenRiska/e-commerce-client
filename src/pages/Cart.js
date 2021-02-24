@@ -22,7 +22,7 @@ function Cart() {
                     </tr>
                 </thead>
                 <tbody>
-                    {cart.map(item => 
+                    {cart?.products?.map(item => 
                     <tr key={item.id}>
                         <td className="row-remove"><CloseIcon 
                         onClick={() => removeFromCart(item)} className="deleteBtn" style={{color: "red"}}/></td>

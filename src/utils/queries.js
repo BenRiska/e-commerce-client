@@ -67,20 +67,28 @@ mutation register($email: String!, $password: String!) {
 }
 `;
 
-export const CREATE_ORDER = gql`
-mutation 
-createOrder($cartInput: cartInput)
+export const ADD_PRODUCT = gql`
+  mutation addProduct(
+    $cartId: String! 
+    $productId: String!, 
+    $size: String!, 
+    $quantity: Int!)
   {
-  createOrder(cartInput: $cartInput){
+  addProduct(
+    cartId: $cartId, 
+    productId: $productId, 
+    size: $size, 
+    quantity: $quantity){
     id
-    paypalId
-    items {
-      name
+    products {
       id
+      name
       description
-      images 
-      sizes
+      images
+      sizes 
       price
+      size
+      quantity
     }
   }
 }
