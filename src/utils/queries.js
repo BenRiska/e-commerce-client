@@ -93,3 +93,25 @@ export const ADD_PRODUCT = gql`
   }
 }
 `
+
+export const DELETE_CART_PRODUCT = gql`
+ mutation deleteCartProduct(
+   $cartId: String!, 
+   $productId: String!){
+     deleteCartProduct(
+       cartId: $cartId, 
+       productId: $productId){
+       id
+       products {
+        id
+        name
+        description
+        images
+        sizes 
+        price
+        size
+        quantity
+       }
+     }
+   }
+`

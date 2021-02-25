@@ -13,7 +13,7 @@ function Checkout(props) {
 
         let total = 0;
 
-        cart.forEach(element => {
+        cart.products.forEach(element => {
             console.log(element.price)
            total += parseFloat(element.price)
         });
@@ -54,8 +54,8 @@ function Checkout(props) {
                         <p>Product</p>
                         <p>Subtotal</p>
                     </div>
-                    {cart.map(item => 
-                    <div key={item.id}>
+                    {cart.products.map(item => 
+                    <div key={item.id + item.size}>
                         <p>{item.name}</p>
                         <p>{item.price}</p>
                     </div>)}

@@ -3,10 +3,24 @@ import "../styles/Cart/Cart.css"
 import { AuthContext } from '../context/auth';
 import CloseIcon from '@material-ui/icons/Close';
 import CartSummary from '../components/Cart/CartSummary';
+import {useMutation } from '@apollo/react-hooks';
+import {DELETE_CART_PRODUCT} from "../utils/queries"
+
 
 function Cart() {
 
     const {cart, removeFromCart} = useContext(AuthContext)
+
+    const [deleteCartProduct] = useMutation(DELETE_CART_PRODUCT, {
+        update(_,{data: {deleteCartProduct: cart}}){
+            removeFromCart(cart)
+        },
+        onError(err){console.log(err)}
+    })
+
+    const executeDeleteCartProduct = (product) => {
+        deleteCartProduct({variables: {cartId: cart.id, productId: product.id}})
+    }
 
     return (
         <div className="cart">
@@ -25,7 +39,7 @@ function Cart() {
                     {cart?.products?.map(item => 
                     <tr key={item.id}>
                         <td className="row-remove"><CloseIcon 
-                        onClick={() => removeFromCart(item)} className="deleteBtn" style={{color: "red"}}/></td>
+                        onClick={() => executeDeleteCartProduct(item)} className="deleteBtn" style={{color: "red"}}/></td>
                         <td className="row-image"><img src={item.images[0]} alt="product"/></td>
                         <td className="row-name">{item.name}</td>
                         <td className="row-price">£{item.price}</td>

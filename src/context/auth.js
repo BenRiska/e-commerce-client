@@ -26,7 +26,7 @@ if (localStorage.getItem('jwtToken')) {
     login: (userData) => {},
     logout: () => {},
     setCart: (cart) => {},
-    removeFromCart: (item) => {}
+    removeFromCart: (cart) => {}
   });
 
   function authReducer(state, action) {
@@ -42,15 +42,15 @@ if (localStorage.getItem('jwtToken')) {
           user: null
         };
       case "REMOVE_FROM_CART":
-        let newCart = state.cart.filter(item => item.id !== action.payload.id)
-        if(newCart.length < 1){
+        console.log(action.payload)
+        if(action.payload.products?.length < 1){
           localStorage.removeItem("bens-shop-cart");
         } else{
-          localStorage.setItem('bens-shop-cart', JSON.stringify(newCart));
+          localStorage.setItem('bens-shop-cart', JSON.stringify(action.payload));
         }
       return {
         ...state,
-        cart: newCart
+        cart: action.payload
       };
       case "SET_CART":
         localStorage.setItem('bens-shop-cart', JSON.stringify(action.payload));
