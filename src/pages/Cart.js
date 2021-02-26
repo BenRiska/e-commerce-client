@@ -37,7 +37,7 @@ function Cart() {
                 </thead>
                 <tbody>
                     {cart?.products?.map(item => 
-                    <tr key={item.id}>
+                    <tr key={item.id + Math.random() * 100}>
                         <td className="row-remove"><CloseIcon 
                         onClick={() => executeDeleteCartProduct(item)} className="deleteBtn" style={{color: "red"}}/></td>
                         <td className="row-image"><img src={item.images[0]} alt="product"/></td>

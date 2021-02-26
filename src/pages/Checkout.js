@@ -1,20 +1,35 @@
 import React, {useContext} from 'react'
 import "../styles/Checkout/Checkout.css"
-import {Link} from "react-router-dom"
+import {Link, useHistory} from "react-router-dom"
 import { AuthContext } from '../context/auth';
 import { useMutation } from '@apollo/react-hooks';
+import {CREATE_ORDER} from "../utils/queries"
 
+function Checkout() {
 
-function Checkout(props) {
+    const {user, cart, deleteCart} = useContext(AuthContext)
 
-    const {user, cart} = useContext(AuthContext)
+    const history = useHistory()
+
+    const [createOrder] = useMutation(CREATE_ORDER, {
+        update(_,{data: {createOrder: order}}){
+            history.push({
+                pathname: `order/${order.id}`,
+                state: {order}
+            })
+            deleteCart()
+        },
+        onError(err){
+            console.log(err)
+        },
+        variables: {cartId: cart.id}
+    })
 
     const calculateTotal = () => {
 
         let total = 0;
 
         cart.products.forEach(element => {
-            console.log(element.price)
            total += parseFloat(element.price)
         });
 
@@ -81,7 +96,7 @@ function Checkout(props) {
                     </div>
                     <button onClick={(e) => {
                         e.preventDefault()
-                        props.history.push(`/order/1`);
+                        createOrder()
                         }}>PROCEED TO PAYPAL</button>
                 </div>
             </form>

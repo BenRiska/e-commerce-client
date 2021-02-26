@@ -26,7 +26,8 @@ if (localStorage.getItem('jwtToken')) {
     login: (userData) => {},
     logout: () => {},
     setCart: (cart) => {},
-    removeFromCart: (cart) => {}
+    removeFromCart: (cart) => {},
+    deleteCart: () => {}
   });
 
   function authReducer(state, action) {
@@ -58,6 +59,12 @@ if (localStorage.getItem('jwtToken')) {
           ...state,
           cart: action.payload
         }
+      case "DELETE_CART":
+        localStorage.removeItem("bens-shop-cart");
+        return {
+          ...state,
+          cart: null
+        }
       default:
         return state;
     }
@@ -86,6 +93,10 @@ if (localStorage.getItem('jwtToken')) {
     function removeFromCart(item){
       dispatch({type: "REMOVE_FROM_CART", payload: item})
     }
+
+    function deleteCart(){
+      dispatch({type: "DELETE_CART"})
+    }
   
     return (
       <AuthContext.Provider
@@ -95,7 +106,8 @@ if (localStorage.getItem('jwtToken')) {
           login, 
           logout, 
           setCart,
-          removeFromCart
+          removeFromCart,
+          deleteCart
            }}
         {...props}
       />

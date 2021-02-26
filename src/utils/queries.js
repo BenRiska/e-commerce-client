@@ -115,3 +115,25 @@ export const DELETE_CART_PRODUCT = gql`
      }
    }
 `
+
+export const CREATE_ORDER = gql`
+  mutation createOrder($cartId: String!){
+    createOrder(cartId: $cartId){
+      paypalId
+      id
+      createdAt
+      shipping
+      cart
+      products {
+        id
+        name
+        description
+        images
+        sizes 
+        price
+        size
+        quantity
+      }
+    }
+  }
+`
